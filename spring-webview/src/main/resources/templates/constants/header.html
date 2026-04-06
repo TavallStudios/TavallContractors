@@ -1,0 +1,24 @@
+<header th:fragment="header(title)" class="topbar">
+    <div class="container topbar-inner">
+        <div class="brand">
+            <div class="brand-icon">T</div>
+            <div>
+                <div th:text="${brand}">Tavall</div>
+                <div class="trust-micro">Escrow-first contracts. Verified delivery.</div>
+            </div>
+        </div>
+        <nav class="nav-links">
+            <a class="nav-item" href="/" th:href="${T(org.tavall.couriers.api.web.endpoints.Routes).Page.HOME}">Home</a>
+            <a class="nav-item" href="/hire-direct" th:href="${T(org.tavall.couriers.api.web.endpoints.Routes).Page.HIRE_DIRECT}">Hire Direct</a>
+            <a class="nav-item" href="/portfolios" th:href="${T(org.tavall.couriers.api.web.endpoints.Routes).Page.PORTFOLIOS}">Portfolios</a>
+            <a class="nav-item" href="/freelancer" th:href="${T(org.tavall.couriers.api.web.endpoints.Routes).Page.FREELANCER}">Freelancer</a>
+            <a class="nav-item" href="/client/dashboard" th:href="${T(org.tavall.couriers.api.web.endpoints.Routes).Page.CLIENT_DASHBOARD}">Client Dashboard</a>
+            <a class="nav-item" href="/freelancer/dashboard" th:href="${T(org.tavall.couriers.api.web.endpoints.Routes).Page.FREELANCER_DASHBOARD}">Freelancer Dashboard</a>
+            <button class="btn btn-ghost btn-sm" type="button" data-intake-open>Start Intake</button>
+            <div class="cart-indicator" data-intake-open>
+                <span id="cart-indicator-count">0</span>
+                <span>Cart</span>
+            </div>
+        </nav>
+    </div>
+</header>

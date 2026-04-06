@@ -1,0 +1,76 @@
+<div th:fragment="intakeModal(page)" id="intake-modal-root" class="intake-overlay" th:attr="data-page=${page}">
+    <div class="intake-layout">
+        <aside class="intake-sidebar">
+            <div class="brand" style="margin-bottom:24px;">
+                <div class="brand-icon">T</div>
+                <div>
+                    <div>Intake Builder</div>
+                    <div class="small" style="color:var(--muted);">Scoped to escrow-ready.</div>
+                </div>
+            </div>
+            <div class="nav-step active">Triage</div>
+            <div class="nav-step">Scope Cart</div>
+            <div class="nav-step">Checkout</div>
+            <div class="card" style="margin-top:20px;">
+                <div class="small">Completeness</div>
+                <div id="completeness-badge" class="badge badge-blue" style="margin-top:8px;"></div>
+                <div class="small" style="margin-top:14px;">Risk</div>
+                <div id="risk-badge" class="badge badge-risk" style="margin-top:8px;"></div>
+            </div>
+            <button class="btn btn-ghost btn-sm" type="button" data-intake-close style="margin-top:20px;">Close Intake</button>
+        </aside>
+        <div class="intake-content">
+            <div class="grid-2">
+                <div class="card">
+                    <form id="intake-form" class="intake-form">
+                        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                            <h3 style="margin:0;">Project Triage</h3>
+                            <button class="btn btn-ghost btn-sm" type="button" data-intake-close>Close</button>
+                        </div>
+                        <p class="small">Capture the essentials so your scope can be funded.</p>
+                        <div class="intake-grid">
+                            <label>Domain <input name="domain" /></label>
+                            <label>Domain Type <input name="domainType" /></label>
+                            <label>Tech Level <input name="techLevel" /></label>
+                            <label>Budget <input name="budget" placeholder="1000-3000, custom, etc." /></label>
+                            <label>Custom Budget <input name="customBudget" /></label>
+                            <label>Deadline <input name="deadline" /></label>
+                            <label>Contract Type <input name="contractType" /></label>
+                        </div>
+                        <div class="docs-line">
+                            <span>Docs:</span>
+                            <label><input type="checkbox" name="docsType" value="none" /> None</label>
+                            <label><input type="checkbox" name="docsType" value="design" /> Design</label>
+                            <label><input type="checkbox" name="docsType" value="spec" /> Spec</label>
+                            <label><input type="checkbox" name="docsType" value="repo" /> Repo</label>
+                        </div>
+                        <div class="intake-actions">
+                            <button class="btn btn-ghost btn-sm" type="button" id="generate-spec">Generate Spec</button>
+                            <button class="btn btn-alt btn-sm" type="button" id="save-to-cart">Save Scope To Cart</button>
+                            <button class="btn btn-sexy-green btn-sm" type="button" id="checkout">Checkout Cart</button>
+                        </div>
+                        <pre id="generated-spec" class="generated-spec"></pre>
+                    </form>
+                </div>
+                <aside class="card cart-panel">
+                    <h3>Shopping Cart</h3>
+                    <p class="cart-subtitle">Save triage scopes as line items any time during the session.</p>
+                    <div class="addon-list">
+                        <p class="addon-title">Add-ons</p>
+                        <label><input type="checkbox" data-addon-code="priority_onboarding" /> Priority Onboarding ($299)</label>
+                        <label><input type="checkbox" data-addon-code="qa_automation" /> QA Automation Pack ($599)</label>
+                        <label><input type="checkbox" data-addon-code="analytics_setup" /> Analytics Setup ($349)</label>
+                    </div>
+                    <div class="cart-summary">
+                        <div><span>Projects</span><strong id="cart-count">0</strong></div>
+                        <div><span>Project Subtotal</span><strong id="cart-project-total">$0.00</strong></div>
+                        <div><span>Add-ons</span><strong id="cart-addon-total">$0.00</strong></div>
+                        <div class="cart-grand"><span>Grand Total</span><strong id="cart-grand-total">$0.00</strong></div>
+                    </div>
+                    <div id="cart-items" class="cart-items"></div>
+                    <div id="cart-status" class="cart-status"></div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,227 @@
+:root {
+    --intake-bg: #f2efe6;
+    --intake-panel: #fffdf7;
+    --intake-border: #d8ccb3;
+    --intake-ink: #2f261a;
+    --intake-muted: #6f6351;
+    --intake-accent: #11505c;
+    --intake-accent-soft: #d6edf0;
+    --intake-danger: #9d2f2f;
+}
+
+#intake-modal-root {
+    margin-top: 26px;
+    color: var(--intake-ink);
+}
+
+.intake-shell {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+.intake-form,
+.cart-panel {
+    border: 1px solid var(--intake-border);
+    background: linear-gradient(180deg, var(--intake-panel), #fff7e8);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 10px 26px rgba(46, 39, 28, 0.09);
+}
+
+.intake-form h3,
+.cart-panel h3 {
+    margin: 0 0 10px;
+}
+
+.intake-grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+
+.intake-grid label {
+    display: grid;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+
+.intake-grid input {
+    border: 1px solid var(--intake-border);
+    border-radius: 10px;
+    padding: 9px 10px;
+    background: #fff;
+    color: var(--intake-ink);
+}
+
+.docs-line {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--intake-muted);
+}
+
+.intake-metrics {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.intake-metrics > div {
+    border: 1px solid var(--intake-border);
+    border-radius: 999px;
+    background: #fff;
+    padding: 5px 10px;
+    font-size: 0.84rem;
+}
+
+.intake-actions {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.intake-actions button {
+    border: 1px solid var(--intake-border);
+    border-radius: 999px;
+    padding: 8px 13px;
+    cursor: pointer;
+    background: #fff;
+}
+
+#save-to-cart {
+    background: var(--intake-accent-soft);
+    border-color: #9ac6cb;
+}
+
+#checkout {
+    background: var(--intake-accent);
+    border-color: #0d4049;
+    color: #f8fffd;
+}
+
+.generated-spec {
+    margin-top: 12px;
+    white-space: pre-wrap;
+    min-height: 110px;
+    border: 1px dashed var(--intake-border);
+    border-radius: 12px;
+    padding: 10px;
+    background: #fffcf4;
+    font-size: 0.84rem;
+}
+
+.cart-subtitle {
+    margin: 0 0 8px;
+    color: var(--intake-muted);
+    font-size: 0.9rem;
+}
+
+.addon-list {
+    border: 1px dashed var(--intake-border);
+    border-radius: 12px;
+    padding: 10px;
+    display: grid;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.addon-title {
+    margin: 0;
+    font-weight: 600;
+    color: var(--intake-ink);
+}
+
+.cart-summary {
+    margin-top: 10px;
+    border: 1px solid var(--intake-border);
+    border-radius: 12px;
+    padding: 9px;
+    display: grid;
+    gap: 7px;
+}
+
+.cart-summary > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--intake-muted);
+}
+
+.cart-summary > div strong {
+    color: var(--intake-ink);
+}
+
+.cart-grand {
+    border-top: 1px solid var(--intake-border);
+    padding-top: 8px;
+    color: var(--intake-ink) !important;
+}
+
+.cart-items {
+    margin-top: 10px;
+    display: grid;
+    gap: 8px;
+}
+
+.cart-empty {
+    margin: 0;
+    color: var(--intake-muted);
+    font-size: 0.9rem;
+}
+
+.cart-line-item {
+    border: 1px solid var(--intake-border);
+    border-radius: 10px;
+    background: #fffdf7;
+    padding: 10px;
+    display: grid;
+    gap: 8px;
+}
+
+.cart-line-item h4 {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.cart-line-item p {
+    margin: 2px 0;
+    color: var(--intake-muted);
+    font-size: 0.86rem;
+}
+
+.cart-line-item small {
+    color: var(--intake-muted);
+}
+
+.cart-line-price {
+    font-weight: 600;
+}
+
+.cart-remove-btn {
+    justify-self: start;
+    border: 1px solid #e7c7c7;
+    background: #fff4f4;
+    color: var(--intake-danger);
+    border-radius: 999px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.cart-status {
+    margin-top: 10px;
+    min-height: 20px;
+    color: var(--intake-accent);
+    font-size: 0.86rem;
+}
+
+@media (max-width: 960px) {
+    .intake-shell {
+        grid-template-columns: 1fr;
+    }
+}
