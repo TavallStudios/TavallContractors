@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${title}">Tavall</title>
+    <link rel="stylesheet" th:href="@{/css/antigravity.css}" />
+</head>
+<body th:attr="data-page=${page}">
+<div th:replace="~{constants/header :: header(${title})}"></div>
+<main>
+    <section class="section-sm">
+        <div class="container">
+            <h2>Freelancer Jobs</h2>
+            <p>Open funded scopes ready for qualified talent.</p>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container grid-2" id="freelancer-jobs"></div>
+    </section>
+</main>
+<div th:replace="~{constants/intake-modal :: intakeModal(${page})}"></div>
+<div th:replace="~{constants/footer :: footer}"></div>
+<div th:replace="~{constants/routes :: routes}"></div>
+<script type="module" th:src="@{/js/main.js}"></script>
+</body>
+</html>

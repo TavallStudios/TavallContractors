@@ -1,0 +1,14 @@
+{
+  "name": "spring-webview-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npm run build:ts && npm run minify:js",
+    "build:ts": "tsc -p tsconfig.json",
+    "minify:js": "node ./scripts/minify-js.mjs"
+  },
+  "devDependencies": {
+    "terser": "5.39.0",
+    "typescript": "5.8.2"
+  }
+}
