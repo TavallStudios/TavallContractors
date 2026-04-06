@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TriageCheckoutFlowIntegrationTest {
+class TriageCheckoutFlowTest {
 
     @Autowired
     private MockMvc mockMvc;
