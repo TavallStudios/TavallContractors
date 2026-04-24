@@ -1,0 +1,43 @@
+<script th:fragment="routes" th:inline="javascript">
+/*<![CDATA[*/
+window.TavallRoutes = {
+  api: {
+    auth: {
+      magicRequest: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Auth.MAGIC_REQUEST}]]*/,
+      magicVerify: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Auth.MAGIC_VERIFY}]]*/
+    },
+    intake: {
+      state: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Intake.STATE}]]*/,
+      cartItems: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Intake.CART_ITEMS}]]*/,
+      cartItem: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Intake.CART_ITEM}]]*/,
+      addons: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Intake.ADDONS}]]*/,
+      evaluate: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Intake.EVALUATE}]]*/,
+      spec: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Intake.SPEC}]]*/,
+      checkout: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Intake.CHECKOUT}]]*/
+    },
+    marketplace: {
+      hireDirect: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Marketplace.HIRE_DIRECT_TALENT}]]*/,
+      portfolios: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Marketplace.PORTFOLIOS}]]*/,
+      freelancerJobs: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Marketplace.FREELANCER_JOBS}]]*/,
+      clientDashboard: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Marketplace.CLIENT_DASHBOARD}]]*/,
+      freelancerDashboard: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Marketplace.FREELANCER_DASHBOARD}]]*/,
+      adminStats: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Marketplace.ADMIN_STATS}]]*/
+    },
+    freelancer: {
+      portfolio: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Freelancer.PORTFOLIO}]]*/,
+      workspace: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Freelancer.WORKSPACE}]]*/,
+      workspaceActivate: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Api.Freelancer.WORKSPACE_ACTIVATE}]]*/
+    }
+  },
+  pages: {
+    home: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Page.HOME}]]*/,
+    hireDirect: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Page.HIRE_DIRECT}]]*/,
+    portfolios: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Page.PORTFOLIOS}]]*/,
+    freelancer: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Page.FREELANCER}]]*/,
+    clientDashboard: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Page.CLIENT_DASHBOARD}]]*/,
+    freelancerDashboard: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Page.FREELANCER_DASHBOARD}]]*/,
+    freelancerPortfolio: /*[[${T(org.tavall.couriers.api.web.endpoints.Routes).Page.FREELANCER_PORTFOLIO}]]*/
+  }
+};
+/*]]>*/
+</script>

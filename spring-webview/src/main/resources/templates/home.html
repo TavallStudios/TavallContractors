@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${title}">Tavall</title>
+    <link rel="stylesheet" th:href="@{/css/antigravity.css}" />
+</head>
+
+<body th:attr="data-page=${page}">
+    <div th:replace="~{constants/header :: header(${title})}"></div>
+    <main>
+        <section class="hero-container">
+            <div class="container">
+                <span class="badge badge-blue">Curated Contracts</span>
+                <h1 class="hero-title">Elite contractors, escrow-first delivery.</h1>
+                <p class="hero-subtitle">Tavall matches you with vetted specialists and locks scope into escrow so delivery stays on track. Start your triage now and save every scope to cart.</p>
+                <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                    <button class="btn btn-accent" type="button" data-intake-open>Start Intake</button>
+                    <a class="btn btn-ghost" href="/hire-direct" th:href="${T(org.tavall.couriers.api.web.endpoints.Routes).Page.HIRE_DIRECT}">Browse Talent</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container grid-3">
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">01</div>
+                    <h3>Rapid Scope</h3>
+                    <p>Capture requirements fast and translate them into funded scopes with zero friction.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">02</div>
+                    <h3>Escrow Control</h3>
+                    <p>Milestone-based escrow keeps both sides accountable and transparent.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">03</div>
+                    <h3>Curated Talent</h3>
+                    <p>We pre-screen contractors for quality, communication, and delivery discipline.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="text-center">
+                    <h2>How Tavall Works</h2>
+                    <p>Three steps to funded execution-ready projects.</p>
+                </div>
+                <div class="pipeline-container">
+                    <div class="pipeline-step scroll-reveal">
+                        <div class="pipeline-num">1</div>
+                        <h3>Triage & Scope</h3>
+                        <p>Answer targeted questions and build your project scope.</p>
+                    </div>
+                    <div class="pipeline-step scroll-reveal">
+                        <div class="pipeline-num">2</div>
+                        <h3>Cart & Add-ons</h3>
+                        <p>Save multiple scopes, choose add-ons, and review totals.</p>
+                    </div>
+                    <div class="pipeline-step scroll-reveal">
+                        <div class="pipeline-num">3</div>
+                        <h3>Fund & Launch</h3>
+                        <p>Checkout deposits escrow and the project enters fulfillment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div th:replace="~{constants/intake-modal :: intakeModal(${page})}"></div>
+    <div th:replace="~{constants/footer :: footer}"></div>
+    <div th:replace="~{constants/routes :: routes}"></div>
+    <script type="module" th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

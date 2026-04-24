@@ -1,0 +1,227 @@
+:root {
+    --portfolio-bg: #0b1220;
+    --portfolio-panel: #13233f;
+    --portfolio-panel-soft: #1a3158;
+    --portfolio-border: rgba(126, 180, 255, 0.22);
+    --portfolio-text: #eef5ff;
+    --portfolio-muted: #adc3e8;
+    --portfolio-accent: #8ae7c5;
+    --portfolio-accent-2: #91c8ff;
+}
+
+body.portfolio-page,
+body.workspace-page {
+    background:
+        radial-gradient(circle at 10% 15%, rgba(138, 231, 197, 0.14), transparent 45%),
+        radial-gradient(circle at 92% 20%, rgba(145, 200, 255, 0.2), transparent 38%),
+        linear-gradient(140deg, #060c17, #0f1a2f 48%, #111f39);
+    color: var(--portfolio-text);
+    min-height: 100vh;
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.portfolio-page a,
+body.workspace-page a {
+    color: var(--portfolio-accent-2);
+}
+
+.portfolio-root,
+#freelancer-dashboard-root {
+    margin: 0 auto;
+    max-width: 1080px;
+    padding: 20px 18px 42px;
+}
+
+.portfolio-hero {
+    border: 1px solid var(--portfolio-border);
+    background: linear-gradient(160deg, rgba(145, 200, 255, 0.1), rgba(26, 49, 88, 0.74));
+    border-radius: 22px;
+    padding: 28px;
+    margin-bottom: 22px;
+    box-shadow: 0 14px 40px rgba(3, 11, 23, 0.42);
+}
+
+.portfolio-name {
+    margin: 0 0 8px;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: 0.01em;
+}
+
+.portfolio-tagline {
+    margin: 0 0 18px;
+    color: var(--portfolio-muted);
+    font-size: 1.03rem;
+}
+
+.portfolio-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.portfolio-pill {
+    border: 1px solid var(--portfolio-border);
+    background: rgba(19, 35, 63, 0.82);
+    color: var(--portfolio-muted);
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 0.85rem;
+}
+
+.portfolio-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.portfolio-card {
+    border: 1px solid var(--portfolio-border);
+    background: linear-gradient(180deg, rgba(19, 35, 63, 0.92), rgba(15, 29, 54, 0.84));
+    border-radius: 16px;
+    padding: 18px;
+}
+
+.portfolio-card h2,
+.portfolio-card h3 {
+    margin-top: 0;
+}
+
+.portfolio-card p {
+    color: var(--portfolio-muted);
+    line-height: 1.6;
+}
+
+.portfolio-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.portfolio-skills li {
+    border: 1px solid rgba(138, 231, 197, 0.3);
+    background: rgba(138, 231, 197, 0.08);
+    color: #d9fff2;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+.portfolio-project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.portfolio-project {
+    border: 1px solid rgba(145, 200, 255, 0.24);
+    border-radius: 14px;
+    background: rgba(18, 34, 61, 0.9);
+    overflow: hidden;
+}
+
+.portfolio-project img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.portfolio-project-content {
+    padding: 12px;
+}
+
+.portfolio-project-content h3 {
+    margin: 0 0 6px;
+    font-size: 1rem;
+}
+
+.portfolio-project-content p {
+    margin: 0 0 8px;
+    font-size: 0.9rem;
+}
+
+.portfolio-tech {
+    font-size: 0.8rem;
+    color: var(--portfolio-accent);
+}
+
+.workspace-actions,
+.workspace-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.workspace-btn {
+    border: 1px solid var(--portfolio-border);
+    border-radius: 999px;
+    background: rgba(145, 200, 255, 0.16);
+    color: var(--portfolio-text);
+    padding: 9px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+}
+
+.workspace-btn:hover {
+    background: rgba(145, 200, 255, 0.28);
+}
+
+.workspace-btn.primary {
+    background: rgba(138, 231, 197, 0.2);
+    border-color: rgba(138, 231, 197, 0.42);
+}
+
+.workspace-form {
+    display: grid;
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.workspace-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+}
+
+.workspace-field label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--portfolio-muted);
+    font-size: 0.86rem;
+}
+
+.workspace-field input,
+.workspace-field textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--portfolio-border);
+    background: rgba(17, 31, 57, 0.75);
+    color: var(--portfolio-text);
+    padding: 10px 11px;
+}
+
+.workspace-field textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.workspace-status {
+    font-size: 0.9rem;
+    color: var(--portfolio-accent);
+}
+
+@media (max-width: 820px) {
+    .portfolio-layout {
+        grid-template-columns: 1fr;
+    }
+}
