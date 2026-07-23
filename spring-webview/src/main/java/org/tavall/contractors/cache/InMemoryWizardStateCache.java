@@ -2,23 +2,19 @@ package org.tavall.contractors.cache;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.tavall.abstractcache.cache.AbstractCache;
-import org.tavall.abstractcache.cache.CacheValue;
 import org.tavall.abstractcache.cache.enums.CacheDomain;
 import org.tavall.abstractcache.cache.enums.CacheSource;
 import org.tavall.abstractcache.cache.enums.CacheType;
 import org.tavall.abstractcache.cache.enums.CacheVersion;
-import org.tavall.abstractcache.cache.interfaces.ICacheKey;
-import org.tavall.abstractcache.cache.interfaces.ICacheValue;
-import org.tavall.abstractcache.cache.maps.CacheMap;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.tavall.contractors.api.dto.WizardSessionState;
 
 import java.time.Duration;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class InMemoryWizardStateCache extends AbstractCache<String, Object> implements WizardStateCache {
@@ -26,31 +22,27 @@ public class InMemoryWizardStateCache extends AbstractCache<String, Object> impl
     private static final String STATE_PREFIX = "wizard-state:";
     private static final String OTP_PREFIX = "wizard-otp:";
 
-    private final CacheMap cacheMap = CacheMap.getCacheMap();
     private final Set<String> stateKeys = ConcurrentHashMap.newKeySet();
     private final Set<String> otpKeys = ConcurrentHashMap.newKeySet();
     private final ObjectMapper objectMapper;
 
     public InMemoryWizardStateCache(ObjectMapper objectMapper) {
+        super(5, TimeUnit.MINUTES);
         this.objectMapper = objectMapper;
     }
 
-    @Override
     public CacheType getCacheType() {
         return CacheType.MEMORY;
     }
 
-    @Override
     public CacheDomain getCacheDomain() {
         return CacheDomain.USER;
     }
 
-    @Override
     public CacheSource getSource() {
         return CacheSource.USER_ACCOUNT_SERVICE;
     }
 
-    @Override
     public CacheVersion getVersion() {
         return CacheVersion.V1_0;
     }
@@ -58,9 +50,7 @@ public class InMemoryWizardStateCache extends AbstractCache<String, Object> impl
     @Override
     public void putState(String sessionKey, WizardSessionState state, Duration ttl) {
         String rawKey = STATE_PREFIX + sessionKey;
-        ICacheKey<String> cacheKey = cacheKey(rawKey);
-        cacheMap.removeCacheKey(cacheKey);
-        cacheMap.add(cacheKey, createValue(deepCopy(state), expiresAt(ttl)));
+        put(cacheKey(rawKey), deepCopy(state), ttlMillis(ttl));
         stateKeys.add(rawKey);
     }
 
@@ -74,16 +64,14 @@ public class InMemoryWizardStateCache extends AbstractCache<String, Object> impl
     @Override
     public void evictState(String sessionKey) {
         String rawKey = STATE_PREFIX + sessionKey;
-        cacheMap.removeCacheKey(cacheKey(rawKey));
+        removeValue(rawKey);
         stateKeys.remove(rawKey);
     }
 
     @Override
     public void putOtp(String email, String otp, Duration ttl) {
         String rawKey = OTP_PREFIX + normalizeEmail(email);
-        ICacheKey<String> cacheKey = cacheKey(rawKey);
-        cacheMap.removeCacheKey(cacheKey);
-        cacheMap.add(cacheKey, createValue(otp, expiresAt(ttl)));
+        put(cacheKey(rawKey), otp, ttlMillis(ttl));
         otpKeys.add(rawKey);
     }
 
@@ -96,20 +84,19 @@ public class InMemoryWizardStateCache extends AbstractCache<String, Object> impl
         }
         boolean valid = value.get().equals(otp);
         if (valid) {
-            cacheMap.removeCacheKey(cacheKey(rawKey));
+            removeValue(rawKey);
             otpKeys.remove(rawKey);
         }
         return valid;
     }
 
     @Scheduled(fixedDelay = 60_000L)
-    void cleanupExpired() {
-        for (String key : stateKeys) {
-            resolveValue(key, WizardSessionState.class, stateKeys);
-        }
-        for (String key : otpKeys) {
-            resolveValue(key, String.class, otpKeys);
-        }
+    @Override
+    public int cleanupExpired() {
+        int removed = super.cleanupExpired();
+        stateKeys.removeIf(key -> !containsValue(key));
+        otpKeys.removeIf(key -> !containsValue(key));
+        return removed;
     }
 
     private WizardSessionState deepCopy(WizardSessionState state) {
@@ -117,38 +104,38 @@ public class InMemoryWizardStateCache extends AbstractCache<String, Object> impl
     }
 
     private <T> Optional<T> resolveValue(String rawKey, Class<T> type, Set<String> index) {
-        List<ICacheValue<?>> bucket = cacheMap.getBucket(cacheKey(rawKey));
-        if (bucket.isEmpty()) {
+        Object rawValue = getIfPresent(
+                rawKey,
+                getCacheDomain(),
+                getCacheType(),
+                getVersion(),
+                getSource()
+        );
+        if (rawValue == null) {
             index.remove(rawKey);
             return Optional.empty();
         }
-
-        ICacheValue<?> wrapper = bucket.get(bucket.size() - 1);
-        if (!(wrapper instanceof CacheValue<?> cacheValue)) {
-            cacheMap.removeCacheKey(cacheKey(rawKey));
-            index.remove(rawKey);
-            return Optional.empty();
-        }
-        if (cacheValue.isExpired()) {
-            cacheMap.removeCacheKey(cacheKey(rawKey));
-            index.remove(rawKey);
-            return Optional.empty();
-        }
-
-        Object rawValue = cacheValue.getValue();
         if (!type.isInstance(rawValue)) {
             return Optional.empty();
         }
         return Optional.of(type.cast(rawValue));
     }
 
-    private ICacheKey<String> cacheKey(String rawKey) {
+    private org.tavall.abstractcache.cache.interfaces.ICacheKey<String> cacheKey(String rawKey) {
         return createKey(rawKey, getCacheType(), getCacheDomain(), getSource(), getVersion());
     }
 
-    private long expiresAt(Duration ttl) {
+    private long ttlMillis(Duration ttl) {
         Duration safeTtl = ttl == null || ttl.isNegative() ? Duration.ZERO : ttl;
-        return System.currentTimeMillis() + safeTtl.toMillis();
+        return safeTtl.toMillis();
+    }
+
+    private boolean containsValue(String rawKey) {
+        return containsKey(rawKey, getCacheDomain(), getCacheType(), getVersion(), getSource());
+    }
+
+    private void removeValue(String rawKey) {
+        remove(rawKey, getCacheDomain(), getCacheType(), getVersion(), getSource());
     }
 
     private String normalizeEmail(String email) {
