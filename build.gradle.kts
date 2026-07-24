@@ -147,6 +147,7 @@ project(":spring-webview") {
         "implementation"("org.springframework.boot:spring-boot-jackson2")
         "runtimeOnly"("org.postgresql:postgresql")
         "testImplementation"("org.springframework.boot:spring-boot-starter-test")
+        "integrationTestImplementation"(platform("org.junit:junit-bom:6.0.3"))
         "integrationTestImplementation"("org.springframework.boot:spring-boot-starter-test")
         "integrationTestImplementation"("org.springframework.boot:spring-boot-webmvc-test")
         "integrationTestImplementation"("org.testcontainers:testcontainers-junit-jupiter:$testcontainersVersion")
