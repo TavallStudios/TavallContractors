@@ -155,6 +155,7 @@ project(":spring-webview") {
         "integrationTestImplementation"("org.testcontainers:testcontainers-mongodb:$testcontainersVersion")
         "testRuntimeOnly"("org.junit.platform:junit-platform-launcher")
         "integrationTestRuntimeOnly"("org.junit.platform:junit-platform-launcher")
+        "integrationTestRuntimeOnly"("org.apiguardian:apiguardian-api:1.1.2")
     }
 
     tasks.named<Jar>("jar") {
