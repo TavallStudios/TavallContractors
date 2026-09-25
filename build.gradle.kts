@@ -26,7 +26,6 @@ subprojects {
     }
 
     repositories {
-        mavenLocal()
         mavenCentral()
         val token = providers.environmentVariable("GITHUB_TOKEN")
         if (token.isPresent) {
