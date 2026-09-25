@@ -27,17 +27,6 @@ subprojects {
 
     repositories {
         mavenCentral()
-        val token = providers.environmentVariable("GITHUB_TOKEN")
-        if (token.isPresent) {
-            maven {
-                name = "TavallPackages"
-                url = uri("https://maven.pkg.github.com/TavallStudios/tavall-cache")
-                credentials {
-                    username = providers.environmentVariable("GITHUB_ACTOR").orNull
-                    password = token.get()
-                }
-            }
-        }
     }
 
     dependencyLocking {
