@@ -38,5 +38,11 @@ checks:
     executor: gradle
     tasks:
       - "clean"
+      - ":internal-contractor-api:clean"
+      - ":spring-webview:clean"
       - "check"
+      - ":internal-contractor-api:check"
+      - ":spring-webview:check"
       - "assemble"
+      - ":internal-contractor-api:assemble"
+      - ":spring-webview:assemble"
