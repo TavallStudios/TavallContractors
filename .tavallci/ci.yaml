@@ -32,6 +32,7 @@ artifacts:
 
 requiredChecks:
   - quality
+  - integration
 
 checks:
   quality:
@@ -46,3 +47,8 @@ checks:
       - "assemble"
       - ":internal-contractor-api:assemble"
       - ":spring-webview:assemble"
+
+  integration:
+    executor: gradle
+    tasks:
+      - ":spring-webview:integrationTest"
