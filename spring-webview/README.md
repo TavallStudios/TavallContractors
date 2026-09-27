@@ -43,7 +43,7 @@ Current target and exact deployed source are not recorded in GitHub deployment e
 
 - **Module Type:** `RUNTIME`
 - **Runtime:** `Self`
-- **Current PR Stack:** [product integration root #5](https://github.com/TavallStudios/TavallContractors/pull/5), [Java Tools adoption #4](https://github.com/TavallStudios/TavallContractors/pull/4), [CI transition #3](https://github.com/TavallStudios/TavallContractors/pull/3); documentation update: __PR_LINK__.
+- **Current PR Stack:** [product integration root #5](https://github.com/TavallStudios/TavallContractors/pull/5), [Java Tools adoption #4](https://github.com/TavallStudios/TavallContractors/pull/4), [CI transition #3](https://github.com/TavallStudios/TavallContractors/pull/3); documentation update: [PR #7](https://github.com/TavallStudios/TavallContractors/pull/7).
 - Shared contribution policy: [Tavall Docs Git Workflow](https://github.com/TavallStudios/tavall-docs/blob/main/docs/quality/GIT_WORKFLOW.md).
 
 
@@ -54,13 +54,13 @@ Current target and exact deployed source are not recorded in GitHub deployment e
 
 | Surface | Sync State | Location | Last Updated | Evidence |
 | --- | --- | --- | --- | --- |
-| GitHub | `PRIMARY` | `TavallStudios/TavallContractors/spring-webview/README.md` | 2026-09-27 12:51 PM PDT | __PR_URL__ |
-| Notion | `NOT_APPLICABLE` | — | 2026-09-27 12:51 PM PDT | README routing surface; no 1:1 twin is assigned. |
+| GitHub | `PRIMARY` | `TavallStudios/TavallContractors/spring-webview/README.md` | 2026-09-27 12:59 PM PDT | [PR #7](https://github.com/TavallStudios/TavallContractors/pull/7) |
+| Notion | `NOT_APPLICABLE` | — | 2026-09-27 12:59 PM PDT | README routing surface; no 1:1 twin is assigned. |
 
 ### Update History
 
 | Timestamp | Surface | Event | Location | Previous Location | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09-27 12:51 PM PDT | GitHub | `CREATED` | `TavallStudios/TavallContractors/spring-webview/README.md` | — | __PR_URL__ | Added a module README grounded in current Spring source and product-flow documents. |
+| 2026-09-27 12:59 PM PDT | GitHub | `CREATED` | `TavallStudios/TavallContractors/spring-webview/README.md` | — | [PR #7](https://github.com/TavallStudios/TavallContractors/pull/7) | Added a module README grounded in current Spring source and product-flow documents. |
 
 </details>

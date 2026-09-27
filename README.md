@@ -69,13 +69,13 @@ The repository contains the independently executable `spring-webview` applicatio
 
 | Surface | Sync State | Location | Last Updated | Evidence |
 | --- | --- | --- | --- | --- |
-| GitHub | `PRIMARY` | `TavallStudios/TavallContractors/README.md` | 2026-09-27 12:51 PM PDT | __PR_URL__ |
-| Notion | `NOT_APPLICABLE` | — | 2026-09-27 12:51 PM PDT | README routing surface; no 1:1 twin is assigned. |
+| GitHub | `PRIMARY` | `TavallStudios/TavallContractors/README.md` | 2026-09-27 12:59 PM PDT | [PR #7](https://github.com/TavallStudios/TavallContractors/pull/7) |
+| Notion | `NOT_APPLICABLE` | — | 2026-09-27 12:59 PM PDT | README routing surface; no 1:1 twin is assigned. |
 
 ### Update History
 
 | Timestamp | Surface | Event | Location | Previous Location | Evidence | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09-27 12:51 PM PDT | GitHub | `CREATED` | `TavallStudios/TavallContractors/README.md` | — | __PR_URL__ | Added a public project front door, current module map, and honest deployment routing. |
+| 2026-09-27 12:59 PM PDT | GitHub | `CREATED` | `TavallStudios/TavallContractors/README.md` | — | [PR #7](https://github.com/TavallStudios/TavallContractors/pull/7) | Added a public project front door, current module map, and honest deployment routing. |
 
 </details>
